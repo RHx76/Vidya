@@ -1,26 +1,35 @@
 import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
-import { db } from "@/lib/db";
+import { PrismaClient } from "@prisma/client";
 
-export async function POST(req:Request) {
-    try{
-        const {userId} = await auth();
-        const {title} = await req.json();
+const prisma = new PrismaClient();
 
-        if(!userId)
-            return new NextResponse("Unauthorized",{status:401});
+export async function POST(req: Request) {
+    try {
+        const { userId } = await auth();
+        const { title, description, imageUrl, price, categoryId } = await req.json();
 
-        const course=await db.create({
-            data:{
+        if (!userId) {
+            return new NextResponse("Unauthorized", { status: 401 });
+        }
+
+        const course = await prisma.course.create({
+            data: {
                 userId,
                 title,
-            }
+                description,
+                imageUrl,
+                price,
+                isPublished: false,
+                categoryId,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+            },
         });
 
         return NextResponse.json(course);
-    }
-    catch (error){
-        console.log("[COURSES]",error);
-        return new NextResponse("Internal Error",{status:500});
+    } catch (error) {
+        console.log("[COURSES]", error);
+        return new NextResponse("Internal Error", { status: 500 });
     }
 }
