@@ -111,6 +111,7 @@ export const ImageForm = ({
           endpoint="courseImage"
           onChange={(url)=>{
             if(url){
+              alert(url.toString())
               onSubmit({imageUrl:url.toString()});
             }
           }}
