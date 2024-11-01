@@ -3,8 +3,12 @@ import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
+async function GET(req:Request) {
+    return NextResponse.json({msg:'hi'});
+}
 
-export async function POST(req: Request) {
+async function POST(req: Request) {
+    console.log('hi');
     try {
         const { userId } = await auth();
         const { title, description, imageUrl, price, categoryId } = await req.json();
@@ -33,3 +37,5 @@ export async function POST(req: Request) {
         return new NextResponse("Internal Error", { status: 500 });
     }
 }
+
+export {GET,POST};
