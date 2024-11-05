@@ -4,16 +4,20 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
 generator client {
   provider = "prisma-client-js"
 }
 
-<<<<<<< HEAD
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-=======
+
 model Course{
   id       String    @id @default(auto()) @map("_id") @db.ObjectId
   userId String
@@ -122,6 +126,7 @@ model StripeCustomer {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
 // model Post {
 //   id       String    @id @default(auto()) @map("_id") @db.ObjectId
 //   slug     String    @unique
@@ -154,4 +159,4 @@ model StripeCustomer {
 //   state  String
 //   zip    String
 // }
->>>>>>> 54b73ef (Finalized schema, added creation API and reorder functionality)
+// }

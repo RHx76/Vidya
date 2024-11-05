@@ -34,6 +34,9 @@ const CourseIdPage = async ({
                     position: "asc",
                 },
             },
+            id: courseId
+        },
+        include:{
             attachments:{
                 orderBy:{
                     createdAt:"desc"
@@ -129,6 +132,9 @@ const CourseIdPage = async ({
                                 initialData={course}
                                 courseId={course.id}
                             />
+                            <div>
+                                TODO:chapters
+                            </div>
                         </div>
                         <div>
                             <div className="flex items-center gap-x-2">
