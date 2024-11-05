@@ -34,16 +34,22 @@ const CourseIdPage = async ({
                     position: "asc",
                 },
             },
-            id: courseId
-        },
-        include:{
             attachments:{
                 orderBy:{
                     createdAt:"desc"
                 }
-            }
-        }
+            },
+
+        },
+        // include:{
+        //     attachments:{
+        //         orderBy:{
+        //             createdAt:"desc"
+        //         }
+        //     }
+        // }
     });
+
     const categories = await db.category.findMany({
         orderBy: {
             name: "asc"
