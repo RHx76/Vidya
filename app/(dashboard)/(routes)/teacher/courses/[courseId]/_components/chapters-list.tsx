@@ -15,7 +15,7 @@ import {
 
 interface ChaptersListProps {
     items: Chapter[];
-    onReorder: (updateData: { id: string; postion: number } []) => void;
+    onReorder: (updateData: { id: string; position: number } []) => void;
     onEdit: (id: string) => void;
 }
 export const ChaptersList = ({
@@ -25,6 +25,7 @@ export const ChaptersList = ({
 }: ChaptersListProps) => {
     const [isMounted, setIsMounted] = useState(false);
     const [chapters, setChapters] = useState(items);
+    console.log(items);
 
     useEffect(()=>{
         setIsMounted(true);
