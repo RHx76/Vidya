@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowLeft, LayoutDashboard } from "lucide-react";
 import { IconBadge } from "@/components/icon-badge";
 import { ChapterTitleForm } from "./_components/chapter-title-form";
+import { ChapterDescriptionForm } from "./_components/chapter-description-form";
 
 const ChapterIdPage = async ({
     params
@@ -42,6 +43,8 @@ const ChapterIdPage = async ({
 
     const completionText = `(${completedFields}/${totalFields})`;
 
+    console.log(newparams)
+
     return ( 
     <div className="p-6">
         <div className="flex items-center justify-between ">
@@ -76,6 +79,11 @@ const ChapterIdPage = async ({
                         initialData={chapter}
                         courseId={newparams.courseId}
                         chapterId={newparams.chapterId}
+                    />
+                    <ChapterDescriptionForm
+                   initialData={chapter}
+                   courseId={newparams.courseId}
+                   chapterId={newparams.chapterId}
                     />
                 </div>
             </div>

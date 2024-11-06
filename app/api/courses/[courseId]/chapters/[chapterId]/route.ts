@@ -10,6 +10,7 @@ export async function PATCH(
     try{
         const { userId } = await auth();
         const { isPublished, ...values } = await req.json();
+        const newparams = await params;
 
         if(!userId){
             return new NextResponse("Unauthorized", { status:401 })
@@ -17,7 +18,7 @@ export async function PATCH(
 
         const ownCourse = await db.course.findFirst({
             where: {
-                id: params.courseId,
+                id: newparams.courseId,
                 userId
             }
         });
@@ -28,8 +29,8 @@ export async function PATCH(
 
         const chapter = await db.chapter.update({
             where: {
-                id: params.chapterId,
-                courseId: params.courseId
+                id: newparams.chapterId,
+                courseId: newparams.courseId
             },
             data: {
                 ...values,
