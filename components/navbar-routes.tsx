@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 // import { isTeacher } from "@/lib/teacher";
 
+import { SearchInput } from "./search-input";
 
 export const NavbarRoutes = () => {
  
@@ -15,10 +16,16 @@ export const NavbarRoutes = () => {
 
   const isTeacherPage = pathname?.startsWith("/teacher");
   const isPlayerPage = pathname === "/chapter";
+  const isSearchPage = pathname === "/search";
 
 
   return (
     <>
+      {isSearchPage && (
+        <div className="hidden md:block">
+          <SearchInput />
+        </div>
+      )}
       <div className="flex gap-x-2 ml-auto">
         {isTeacherPage || isPlayerPage ? (
           <Link href="/">
@@ -26,7 +33,7 @@ export const NavbarRoutes = () => {
               <LogOut className="h-4 w-4 mr-2" />
               Exit
             </Button>
-           </Link>
+          </Link>
         ) :  (
           <Link href="/teacher/courses">
             <Button size="sm" variant="ghost">

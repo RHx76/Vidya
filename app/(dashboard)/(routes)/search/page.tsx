@@ -1,7 +1,7 @@
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
-// import { SearchInput } from "@/components/search-input";
+import { SearchInput } from "@/components/search-input";
 // import { getCourses } from "@/actions/get-courses";
 // import { CoursesList } from "@/components/courses-list";
 import { Categories } from "./_components/categories";
@@ -50,7 +50,7 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
               </p>
              
               <div className="md:hidden mb-6">
-                {/* <SearchInput /> */}
+                <SearchInput />
               </div>
             </div>
           </div>
