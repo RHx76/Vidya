@@ -1,10 +1,10 @@
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
-// import { SearchInput } from "@/components/search-input";
-// import { getCourses } from "@/actions/get-courses";
-// import { CoursesList } from "@/components/courses-list";
+import { SearchInput } from "@/components/search-input";
+import { getCourses } from "@/actions/get-courses";
 import { Categories } from "./_components/categories";
+import { CoursesList } from "@/components/courses-list";
 
 interface SearchPageProps {
   searchParams: {
@@ -26,10 +26,10 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
     }
   });
 
-  // const courses = await getCourses({
-  //   userId,
-  //   ...searchParams,
-  // });
+  const courses = await getCourses({
+    userId,
+    ...searchParams,
+  });
 
   return (
     <div className="min-h-screen bg-white">
@@ -50,7 +50,7 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
               </p>
              
               <div className="md:hidden mb-6">
-                {/* <SearchInput /> */}
+                <SearchInput />
               </div>
             </div>
           </div>
@@ -68,7 +68,7 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
       {/* Main Content */}
       <div className="p-6 space-y-4">
         <Categories items={categories} />
-        {/* <CoursesList items={courses} /> */}
+        <CoursesList items={courses} />
       </div>
 
       {/* Footer Section */}
