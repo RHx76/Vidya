@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BookOpen } from "lucide-react";
+
 import { IconBadge } from "@/components/icon-badge";
 import { formatPrice } from "@/lib/format";
+
 interface CourseCardProps {
   id: string;
   title: string;
@@ -12,6 +14,7 @@ interface CourseCardProps {
   progress: number | null;
   category: string;
 };
+
 export const CourseCard = ({
   id,
   title,
