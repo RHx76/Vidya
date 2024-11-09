@@ -1,4 +1,6 @@
 "use client";
+import { SearchInput } from "./search-input";
+
 
 import { UserButton} from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
@@ -16,9 +18,15 @@ export const NavbarRoutes = () => {
   const isTeacherPage = pathname?.startsWith("/teacher");
   const isPlayerPage = pathname === "/chapter";
 
-
+  const isSearchPage = pathname === "/search";
   return (
     <>
+          {isSearchPage && (
+        <div className="hidden md:block">
+          <SearchInput />
+        </div>
+      )}
+
       <div className="flex gap-x-2 ml-auto">
         {isTeacherPage || isPlayerPage ? (
           <Link href="/">
