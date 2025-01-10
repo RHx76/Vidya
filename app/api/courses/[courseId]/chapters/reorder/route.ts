@@ -3,7 +3,7 @@ import { auth } from "@clerk/nextjs/server";
 
 import { db } from "@/lib/db";
 
-export async function PUT(
+async function PUT(
     req: Request,
     { params } : { params: { courseId: string; }}
 ){
@@ -28,7 +28,7 @@ export async function PUT(
         for(let item of list){
             await db.chapter.update({
                 where: { id: item.id },
-                data: { postion: item.position }
+                data: { position: item.position }
             });
         }
         return new NextResponse("Success", { status: 200 });
@@ -37,3 +37,5 @@ export async function PUT(
         return new NextResponse("Internal Error", { status:500 });
     }
 }
+
+export {PUT};

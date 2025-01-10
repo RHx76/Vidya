@@ -14,7 +14,7 @@ const { video } = new Mux({
 });
 
 
-export async function DELETE(
+async function DELETE(
   req: Request,
   { params }: { params: { courseId: string } }
 ) {
@@ -62,7 +62,7 @@ export async function DELETE(
   }
 }
 
-export async function PATCH(
+async function PATCH(
     req: Request,
     { params }: { params: { courseId: string } }
   ) {
@@ -91,3 +91,5 @@ export async function PATCH(
       return new NextResponse("Internal Error", { status: 500 });
     }
   }
+
+  export {PATCH,DELETE}
