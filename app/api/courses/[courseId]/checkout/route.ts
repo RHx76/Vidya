@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import razorpay from "@/lib/razorpay";
 
-export async function POST(req:Request,
+async function POST(req:Request,
     { params }: { params: { courseId: string;} }) {
     console.log("bella ciao!");
     const newparams = await params;
@@ -58,3 +58,5 @@ export async function POST(req:Request,
         return new NextResponse("Internal Error",{status:500})
     }
 }
+
+export {POST};
