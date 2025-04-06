@@ -1,7 +1,5 @@
-
+![Under](https://github.com/user-attachments/assets/59b42504-0751-4f04-8a77-c1e6e45a4966)
 # Vidya
-
-![Alt text](./public/Under.jpg)
 
 An intuitive and user-friendly Learning Management System designed to facilitate online learning, course management, and interactive engagement between instructors and students.
 
